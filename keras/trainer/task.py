@@ -90,7 +90,7 @@ def dispatch(train_files,
              eval_num_epochs,
              num_epochs,
              checkpoint_epochs):
-  CHURN_MODEL= model.model_fn(INPUT_SIZE, CLASS_SIZE)
+  churn_model= model.model_fn(INPUT_SIZE, CLASS_SIZE)
 
   try:
     os.makedirs(job_dir)
