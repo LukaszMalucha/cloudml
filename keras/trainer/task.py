@@ -18,7 +18,7 @@
 import argparse
 import glob
 import json
-
+import os
 import trainer.model as model
 
 from keras.callbacks import TensorBoard, Callback, ModelCheckpoint
