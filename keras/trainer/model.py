@@ -17,8 +17,18 @@
 import numpy as np
 import pandas as pd
 
+from tensorflow.python.lib.io import file_io
+from pandas.compat import StringIO
+
+def read_data(gcs_path):
+   print('downloading csv file from', gcs_path)     
+   file_stream = file_io.FileIO(gcs_path, mode='r')
+   data = pd.read_csv(StringIO(file_stream.read()))
+   print(data.head())
+   return data
+
 # Importing the dataset
-dataset = pd.read_csv('Churn_Modelling.csv')
+dataset = read_data('gs://churn-modelling-mlengine/data/Churn_Modelling.csv')
 X = dataset.iloc[:, 3:13].values   ## Everything except row number, Name and CustomerId
 y = dataset.iloc[:, 13].values     ## Customer Exited 0-1
 
