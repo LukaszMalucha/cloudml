@@ -80,6 +80,6 @@ classifier.add(Dense(output_dim = 1, init = 'uniform', activation = 'sigmoid')) 
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'] )    ## logarithmic loss
 
 ## Fitting the ANN to the Training set. Two additional arguments - batch size & number of epochs
-classifier.fit(X_train, y_train, batch_size=10, nb_epoch=100)
+classifier.fit(X_train, y_train, batch_size=10, nb_epoch=1)
 
-classifier.save('gs://churn-modelling-mlengine/data/my_classifier.h5') 
+classifier.save(file_io.FileIO('gs://churn-modelling-mlengine/data/my_classifier.h5', mode='wb')) 
