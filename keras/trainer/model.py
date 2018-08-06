@@ -16,6 +16,7 @@
 # Importing the libraries
 import numpy as np
 import pandas as pd
+import os
 
 from tensorflow.python.lib.io import file_io
 from pandas.compat import StringIO
@@ -82,4 +83,8 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 ## Fitting the ANN to the Training set. Two additional arguments - batch size & number of epochs
 classifier.fit(X_train, y_train, batch_size=10, nb_epoch=1)
 
-classifier.save(file_io.FileIO('gs://churn-modelling-mlengine/data/my_classifier.h5', mode='wb')) 
+classifier.save('classifier.h5') 
+
+with file_io.FileIO('classifier.h5', mode='rb') as input_f:
+    with file_io.FileIO('gs://churn-modelling-mlengine/data/classifier.h5', mode='wb+') as output_f:
+        output_f.write(input_f.read())
