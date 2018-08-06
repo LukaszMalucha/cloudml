@@ -18,7 +18,6 @@
 import argparse
 import glob
 import json
-import os
 
 import trainer.model as model
 
@@ -34,8 +33,6 @@ CLASS_SIZE = 2
 CHUNK_SIZE = 5000
 FILE_PATH = 'checkpoint.{epoch:02d}.hdf5'
 CHURN_MODEL= 'churn.hdf5'
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 class ContinuousEval(Callback):
   """Continuous eval callback to evaluate the checkpoint once

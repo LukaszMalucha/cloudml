@@ -1,4 +1,3 @@
-import os
 import keras
 import pandas as pd
 from keras import backend as K
@@ -15,7 +14,7 @@ from tensorflow.python.saved_model import builder as saved_model_builder
 from tensorflow.python.saved_model import tag_constants, signature_constants
 from tensorflow.python.saved_model.signature_def_utils_impl import predict_signature_def
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 
 # csv columns in the input file
 CSV_COLUMNS = ('RowNumber', 'CustomerId', 'Surname', 'CreditScore', 'Geography', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard', 'IsActiveMember', 'EstimatedSalary', 'Exited')
