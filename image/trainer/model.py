@@ -73,8 +73,12 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 from keras.preprocessing.image import ImageDataGenerator 
 from tensorflow.python.platform import gfile
 
-training_data = gfile.ListDirectory('gsutil cp -r gs://image-classifier-mlengine/dataset/training_set/ .')
-test_data =  gfile.ListDirectory('gsutil cp -r gs://image-classifier-mlengine/dataset/test_set/ .')
+# def read_path(gcs_path):
+#   path = file_io.FileIO(gcs_path)
+#   return path
+   
+training_data = gfile.ListDirectory('gs://image-classifier-mlengine/dataset/training_set/')
+test_data =  gfile.ListDirectory('gs://image-classifier-mlengine/dataset/test_set/')
 
 train_datagen = ImageDataGenerator(rescale=1./255,
                                    shear_range=0.2,
