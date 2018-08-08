@@ -18,8 +18,8 @@ from keras.layers import Flatten        # Flattening
 from keras.layers import Dense          # Fully connected layers for ANN
 
 
-from IPython.display import display
-from PIL import Image
+# from IPython.display import display
+# from PIL import Image
 import h5py
 import os
 from tensorflow.python.lib.io import file_io
