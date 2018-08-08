@@ -77,8 +77,8 @@ from tensorflow.python.platform import gfile
 #   path = file_io.FileIO(gcs_path)
 #   return path
    
-training_data = gfile.ListDirectory('gs://image-classifier-mlengine/dataset/training_set/')
-test_data =  gfile.ListDirectory('gs://image-classifier-mlengine/dataset/test_set/')
+training_data = gfile.Open('dataset/training_set')
+test_data =  gfile.Open('dataset/test_set')
 
 train_datagen = ImageDataGenerator(rescale=1./255,
                                    shear_range=0.2,
