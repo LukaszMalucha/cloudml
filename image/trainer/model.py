@@ -71,9 +71,10 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 ### flow_from_directory method code from webpage
 
 from keras.preprocessing.image import ImageDataGenerator 
+from tensorflow.python.platform import gfile
 
-training_data = os.system('gsutil cp -r gs://image-classifier-mlengine/dataset/training_set/ .')
-test_data =  os.system('gsutil cp -r gs://image-classifier-mlengine/dataset/test_set/ .')
+training_data = gfile.ListDirectory('gsutil cp -r gs://image-classifier-mlengine/dataset/training_set/ .')
+test_data =  gfile.ListDirectory('gsutil cp -r gs://image-classifier-mlengine/dataset/test_set/ .')
 
 train_datagen = ImageDataGenerator(rescale=1./255,
                                    shear_range=0.2,
