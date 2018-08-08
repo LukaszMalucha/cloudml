@@ -72,8 +72,8 @@ classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [
 
 from keras.preprocessing.image import ImageDataGenerator 
 
-train_data_dir = 'gs://image-classifier-mlengine/dataset/training_set'
-validation_data_dir = 'gs://image-classifier-mlengine/dataset/test_set'
+training_data = os.system('gsutil cp -r gs://image-classifier-mlengine/dataset/training_set/ .')
+test_data =  os.system('gsutil cp -r gs://image-classifier-mlengine/dataset/test_set/ .')
 
 train_datagen = ImageDataGenerator(rescale=1./255,
                                    shear_range=0.2,
@@ -82,12 +82,12 @@ train_datagen = ImageDataGenerator(rescale=1./255,
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-training_set = train_datagen.flow_from_directory(train_data_dir,       ## extraction directory
+training_set = train_datagen.flow_from_directory(training_data,       ## extraction directory
                                                  target_size=(96, 96),         ## same dims as in cnn
                                                  batch_size=32,
                                                  class_mode='binary')
 
-test_set = test_datagen.flow_from_directory(validation_data_dir,                ## extraction directory
+test_set = test_datagen.flow_from_directory(test_data,                ## extraction directory
                                             target_size=(96, 96),              ## same dims as in cnn
                                             batch_size=32,
                                             class_mode='binary')
